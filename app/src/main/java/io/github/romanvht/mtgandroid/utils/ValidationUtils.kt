@@ -1,7 +1,6 @@
 package io.github.romanvht.mtgandroid.utils
 
 import android.util.Patterns
-import io.github.romanvht.mtgandroid.data.ValidationResult
 import java.net.InetAddress
 
 object ValidationUtils {
@@ -47,4 +46,5 @@ object ValidationUtils {
         val value = cache.toIntOrNull() ?: return false
         return value in 1..10
     }
+
 }
