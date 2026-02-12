@@ -48,6 +48,7 @@
     <string name="warning_privileged_port">Рекомендуется использовать порт больше 1024</string>
 
     <string name="category_about">О программе</string>
+    <string name="about_version">Версия</string>
     <string name="about_developer">Разработчик</string>
     <string name="about_developer_value">romanvht</string>
     <string name="about_github">GitHub</string>

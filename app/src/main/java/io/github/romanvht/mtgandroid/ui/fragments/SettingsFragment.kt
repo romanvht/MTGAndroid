@@ -12,6 +12,7 @@ import io.github.romanvht.mtgandroid.utils.MtgWrapper
 import io.github.romanvht.mtgandroid.utils.PreferencesUtils
 import io.github.romanvht.mtgandroid.utils.ValidationUtils
 import androidx.core.net.toUri
+import io.github.romanvht.mtgandroid.BuildConfig
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
@@ -21,6 +22,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
         setupGenerateSecretButton()
         setupPreferenceSummaries()
         setupValidation()
+
+        findPreference<Preference>("app_version")?.summary = BuildConfig.VERSION_NAME
 
         findPreference<Preference>("github_link")?.setOnPreferenceClickListener {
             val intent = Intent(Intent.ACTION_VIEW).apply {

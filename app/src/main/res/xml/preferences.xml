@@ -52,6 +52,11 @@
         app:iconSpaceReserved="false">
 
         <Preference
+            android:key="app_version"
+            android:title="@string/about_version"
+            app:iconSpaceReserved="false" />
+
+        <Preference
             android:title="@string/about_developer"
             android:summary="@string/about_developer_value"
             app:iconSpaceReserved="false" />
