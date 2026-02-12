@@ -28,6 +28,7 @@ object MtgWrapper {
             val processBuilder = ProcessBuilder(
                 mtgBinary.absolutePath,
                 "generate-secret",
+                "--hex",
                 domain
             )
 
