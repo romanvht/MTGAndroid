@@ -46,6 +46,14 @@
     <string name="error_start_failed">Не удалось запустить прокси</string>
     <string name="error_empty_domain">Введите домен для генерации секрета</string>
     <string name="warning_privileged_port">Рекомендуется использовать порт больше 1024</string>
+    <string name="error_invalid_concurrency">Значение должно быть от 1 до 65535</string>
+    <string name="error_invalid_timeout">Значение должно быть от 1 до 30 секунд</string>
+    <string name="error_invalid_antireplay_cache">Значение должно быть от 1 до 10 MB</string>
+
+    <string name="doh_ip">DNS</string>
+    <string name="concurrency">Максимум соединений</string>
+    <string name="timeout">Таймаут сети (сек)</string>
+    <string name="antireplay_cache">Размер кэша (MB)</string>
 
     <string name="category_about">О программе</string>
     <string name="about_version">Версия</string>

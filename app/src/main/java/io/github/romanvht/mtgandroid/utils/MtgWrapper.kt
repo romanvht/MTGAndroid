@@ -112,13 +112,10 @@ object MtgWrapper {
             }
 
             Log.d(TAG, "Starting proxy on $bindAddress")
+            val command = buildCommand(context, mtgBinary.absolutePath, bindAddress, secret)
+            Log.d(TAG, "MTG command: ${command.joinToString(" ")}")
 
-            val processBuilder = ProcessBuilder(
-                mtgBinary.absolutePath,
-                "simple-run",
-                bindAddress,
-                secret
-            )
+            val processBuilder = ProcessBuilder(command)
 
             processBuilder.directory(context.filesDir)
             processBuilder.redirectErrorStream(true)
@@ -171,6 +168,34 @@ object MtgWrapper {
             Log.e(TAG, "Error starting proxy", e)
             false
         }
+    }
+
+    private fun buildCommand(context: Context, binaryPath: String, bindAddress: String, secret: String): List<String> {
+        val command = mutableListOf(
+            binaryPath,
+            "simple-run"
+        )
+
+        val dohIp = PreferencesUtils.getDohIp(context)
+        command.add("-n")
+        command.add(dohIp)
+
+        val concurrency = PreferencesUtils.getConcurrency(context)
+        command.add("-c")
+        command.add(concurrency.toString())
+
+        val timeout = PreferencesUtils.getTimeout(context)
+        command.add("-t")
+        command.add("${timeout}s")
+
+        val antiReplayCacheMb = PreferencesUtils.getAntiReplayCache(context)
+        command.add("-a")
+        command.add("${antiReplayCacheMb}MB")
+
+        command.add(bindAddress)
+        command.add(secret)
+
+        return command
     }
 
     fun stopProxy() {

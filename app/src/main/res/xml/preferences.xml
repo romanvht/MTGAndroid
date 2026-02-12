@@ -27,6 +27,13 @@
             android:inputType="number"
             app:iconSpaceReserved="false" />
 
+        <EditTextPreference
+            android:key="doh_ip"
+            android:title="@string/doh_ip"
+            android:defaultValue="1.1.1.1"
+            android:inputType="text"
+            app:iconSpaceReserved="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -43,6 +50,33 @@
             android:key="generate_secret"
             android:title="@string/generate_secret"
             android:summary="@string/generate_secret_summary"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/category_advanced"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="concurrency"
+            android:title="@string/concurrency"
+            android:defaultValue="8192"
+            android:inputType="number"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:key="timeout"
+            android:title="@string/timeout"
+            android:defaultValue="10"
+            android:inputType="number"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:key="antireplay_cache"
+            android:title="@string/antireplay_cache"
+            android:defaultValue="1"
+            android:inputType="number"
             app:iconSpaceReserved="false" />
 
     </PreferenceCategory>

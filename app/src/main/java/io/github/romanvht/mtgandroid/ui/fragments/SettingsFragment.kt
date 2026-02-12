@@ -21,6 +21,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         setupGenerateSecretButton()
         setupPreferenceSummaries()
+        setupAdvancedSettingsSummaries()
         setupValidation()
 
         findPreference<Preference>("app_version")?.summary = BuildConfig.VERSION_NAME
@@ -144,6 +145,77 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 val secret = (preference as EditTextPreference).text
                 secret?.ifEmpty { getString(R.string.error_empty_secret) }
                     ?: getString(R.string.error_empty_secret)
+            }
+        }
+    }
+
+    private fun setupAdvancedSettingsSummaries() {
+        findPreference<EditTextPreference>("concurrency")?.apply {
+            summaryProvider = EditTextPreference.SimpleSummaryProvider.getInstance()
+            setOnBindEditTextListener { editText ->
+                editText.inputType = android.text.InputType.TYPE_CLASS_NUMBER
+            }
+            setOnPreferenceChangeListener { _, newValue ->
+                ValidationUtils.isValidConcurrency(newValue as String).also { isValid ->
+                    if (!isValid) {
+                        Toast.makeText(
+                            requireContext(),
+                            R.string.error_invalid_concurrency,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        }
+
+        findPreference<EditTextPreference>("doh_ip")?.apply {
+            summaryProvider = EditTextPreference.SimpleSummaryProvider.getInstance()
+            setOnPreferenceChangeListener { _, newValue ->
+                ValidationUtils.isValidIpAddress(newValue as String).also { isValid ->
+                    if (!isValid) {
+                        Toast.makeText(
+                            requireContext(),
+                            R.string.error_invalid_ip,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        }
+
+        findPreference<EditTextPreference>("timeout")?.apply {
+            summaryProvider = EditTextPreference.SimpleSummaryProvider.getInstance()
+            setOnBindEditTextListener { editText ->
+                editText.inputType = android.text.InputType.TYPE_CLASS_NUMBER
+            }
+            setOnPreferenceChangeListener { _, newValue ->
+                ValidationUtils.isValidTimeout(newValue as String).also { isValid ->
+                    if (!isValid) {
+                        Toast.makeText(
+                            requireContext(),
+                            R.string.error_invalid_timeout,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        }
+
+        findPreference<EditTextPreference>("antireplay_cache")?.apply {
+            summaryProvider = EditTextPreference.SimpleSummaryProvider.getInstance()
+            setOnBindEditTextListener { editText ->
+                editText.inputType = android.text.InputType.TYPE_CLASS_NUMBER
+            }
+            setOnPreferenceChangeListener { _, newValue ->
+                ValidationUtils.isValidAntiReplayCache(newValue as String).also { isValid ->
+                    if (!isValid) {
+                        Toast.makeText(
+                            requireContext(),
+                            R.string.error_invalid_antireplay_cache,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
             }
         }
     }

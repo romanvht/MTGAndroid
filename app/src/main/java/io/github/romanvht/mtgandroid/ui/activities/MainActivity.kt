@@ -165,24 +165,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startProxy() {
-        val ip = PreferencesUtils.getIpAddress(this)
-        val port = PreferencesUtils.getPort(this)
-        val secret = PreferencesUtils.getSecret(this)
-
-        val validation = ValidationUtils.validateProxySettings(ip, port, secret)
-
-        if (!validation.isValid) {
-            MaterialAlertDialogBuilder(this)
-                .setTitle(getString(R.string.error))
-                .setMessage(validation.errorMessage ?: getString(R.string.error_start_failed))
-                .setPositiveButton(getString(R.string.settings)) { _, _ ->
-                    startActivity(Intent(this, SettingsActivity::class.java))
-                }
-                .setNegativeButton(getString(R.string.cancel), null)
-                .show()
-            return
-        }
-
         ServiceManager.startService(this)
 
         if (serviceConnection == null) {

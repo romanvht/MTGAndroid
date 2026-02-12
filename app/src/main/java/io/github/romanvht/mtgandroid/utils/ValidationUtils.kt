@@ -33,27 +33,18 @@ object ValidationUtils {
         return Patterns.DOMAIN_NAME.matcher(domain).matches() || Patterns.WEB_URL.matcher("http://$domain").matches()
     }
 
-    private fun isValidSecret(secret: String): Boolean {
-        return secret.isNotBlank() && secret.length > 10
+    fun isValidConcurrency(concurrency: String): Boolean {
+        val value = concurrency.toIntOrNull() ?: return false
+        return value in 1..65535
     }
 
-    fun validateProxySettings(ip: String, port: String, secret: String): ValidationResult {
-        if (!isValidIpAddress(ip)) {
-            return ValidationResult(false, "Неверный IP адрес")
-        }
+    fun isValidTimeout(timeout: String): Boolean {
+        val value = timeout.toIntOrNull() ?: return false
+        return value in 1..30
+    }
 
-        if (!isValidPort(port)) {
-            return ValidationResult(false, "Порт должен быть от 1 до 65535")
-        }
-
-        if (!isNonPrivilegedPort(port)) {
-            return ValidationResult(false, "Порт должен быть больше 1024")
-        }
-
-        if (!isValidSecret(secret)) {
-            return ValidationResult(false, "Секрет не сгенерирован или некорректен")
-        }
-
-        return ValidationResult(true)
+    fun isValidAntiReplayCache(cache: String): Boolean {
+        val value = cache.toIntOrNull() ?: return false
+        return value in 1..10
     }
 }
