@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MTG Proxy</string>
+    <string name="settings">Настройки</string>
+
+    <string name="ok">Ок</string>
+    <string name="cancel">Отмена</string>
+
+    <string name="connect">Запустить</string>
+    <string name="disconnect">Остановить</string>
+    <string name="status_stopped">Остановлено</string>
+    <string name="status_running">Работает</string>
+    <string name="proxy_info">Информация о прокси</string>
+    <string name="ip_address">IP адрес</string>
+    <string name="port">Порт</string>
+    <string name="telegram_link">Ссылка для Telegram</string>
+    <string name="proxy_link">Прокси ссылка</string>
+    <string name="copied_to_clipboard">Скопировано в буфер обмена</string>
+
+    <string name="category_connection">Подключение</string>
+    <string name="category_secret">Секрет</string>
+    <string name="category_advanced">Дополнительно</string>
+
+    <string name="domain">Домен</string>
+    <string name="domain_summary">Домен для генерации секрета</string>
+    <string name="ip_summary">IP адрес для прослушивания</string>
+    <string name="port_summary">Порт для прослушивания</string>
+
+    <string name="secret">Секрет</string>
+    <string name="secret_summary">MTProxy секрет</string>
+    <string name="generate_secret">Сгенерировать секрет</string>
+    <string name="generate_secret_summary">Генерация нового секрета на основе домена</string>
+    <string name="secret_generated">Секрет сгенерирован</string>
+
+    <string name="notification_channel_name">MTG Proxy Service</string>
+    <string name="notification_channel_description">Уведомления о работе MTG прокси</string>
+    <string name="notification_title">MTG Proxy работает</string>
+    <string name="notification_text">Прокси запущен на %1$s:%2$d</string>
+
+    <string name="error">Ошибка</string>
+    <string name="error_generate_secret">Ошибка генерации секрета</string>
+    <string name="error_empty_secret">Сгенерируйте или введите секрет</string>
+    <string name="error_domain_format">Неверный формат домена</string>
+    <string name="error_invalid_ip">Неверный IP</string>
+    <string name="error_invalid_port">Порт должен быть от 1 до 65535</string>
+    <string name="error_start_failed">Не удалось запустить прокси</string>
+    <string name="error_empty_domain">Введите домен для генерации секрета</string>
+    <string name="warning_privileged_port">Рекомендуется использовать порт больше 1024</string>
+
+    <string name="category_about">О программе</string>
+    <string name="about_developer">Разработчик</string>
+    <string name="about_developer_value">romanvht</string>
+    <string name="about_github">GitHub</string>
+    <string name="about_github_summary">Исходный код</string>
+</resources>

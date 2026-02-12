@@ -1,0 +1,26 @@
+<resources>
+    <style name="Theme.MTGProxy" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">#5976DF</item>
+        <item name="colorPrimaryVariant">#3C52A3</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+
+        <item name="colorSecondary">#5976DF</item>
+        <item name="colorSecondaryVariant">#3C52A3</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+
+        <item name="android:statusBarColor">#3C52A3</item>
+
+        <item name="colorSurface">#F5F5F5</item>
+        <item name="colorOnSurface">#212121</item>
+
+        <item name="materialCardViewStyle">@style/SmallShadowCard</item>
+    </style>
+
+    <style name="SmallShadowCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">1dp</item>
+    </style>
+
+    <style name="CustomAlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <!-- -->
+    </style>
+</resources>

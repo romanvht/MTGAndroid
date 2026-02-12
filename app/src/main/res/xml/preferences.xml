@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="@string/category_connection"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="domain"
+            android:title="@string/domain"
+            android:defaultValue="www.google.com"
+            android:inputType="textUri"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:key="ip_address"
+            android:title="@string/ip_address"
+            android:defaultValue="127.0.0.1"
+            android:inputType="text"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:key="port"
+            android:title="@string/port"
+            android:defaultValue="3128"
+            android:inputType="number"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/category_secret"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="secret"
+            android:title="@string/secret"
+            android:inputType="text"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="generate_secret"
+            android:title="@string/generate_secret"
+            android:summary="@string/generate_secret_summary"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/category_about"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            android:title="@string/about_developer"
+            android:summary="@string/about_developer_value"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="github_link"
+            android:title="@string/about_github"
+            android:summary="@string/about_github_summary"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
