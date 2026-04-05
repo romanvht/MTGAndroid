@@ -63,4 +63,5 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.4")
     //noinspection GradleDependency
     implementation("androidx.lifecycle:lifecycle-service:2.9.4")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 }

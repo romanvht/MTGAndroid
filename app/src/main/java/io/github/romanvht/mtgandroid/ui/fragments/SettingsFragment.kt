@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.preference.EditTextPreference
+import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import io.github.romanvht.mtgandroid.R
@@ -180,6 +181,26 @@ class SettingsFragment : PreferenceFragmentCompat() {
                         ).show()
                     }
                 }
+            }
+        }
+
+        findPreference<ListPreference>("transport_mode")?.apply {
+            summaryProvider = ListPreference.SimpleSummaryProvider.getInstance()
+        }
+
+        findPreference<EditTextPreference>("ws_template")?.apply {
+            summaryProvider = EditTextPreference.SimpleSummaryProvider.getInstance()
+            setOnPreferenceChangeListener { _, newValue ->
+                val value = (newValue as String).trim()
+                val isValid = value.startsWith("wss://") && value.contains("/apiws")
+                if (!isValid) {
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.error_invalid_ws_template,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                isValid
             }
         }
 

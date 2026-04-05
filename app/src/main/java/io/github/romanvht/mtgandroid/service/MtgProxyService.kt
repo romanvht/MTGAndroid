@@ -10,9 +10,11 @@ import androidx.lifecycle.lifecycleScope
 import io.github.romanvht.mtgandroid.R
 import io.github.romanvht.mtgandroid.data.START_ACTION
 import io.github.romanvht.mtgandroid.data.STOP_ACTION
+import io.github.romanvht.mtgandroid.data.TransportMode
 import io.github.romanvht.mtgandroid.utils.BroadcastUtils
 import io.github.romanvht.mtgandroid.utils.MtgWrapper
 import io.github.romanvht.mtgandroid.utils.PreferencesUtils
+import io.github.romanvht.mtgandroid.utils.WsProxyWrapper
 import io.github.romanvht.mtgandroid.utils.createServiceNotification
 import io.github.romanvht.mtgandroid.utils.registerNotificationChannel
 import kotlinx.coroutines.Dispatchers
@@ -83,13 +85,17 @@ class MtgProxyService : LifecycleService() {
 
                 val secret = PreferencesUtils.getSecret(this)
                 val bindAddress = PreferencesUtils.getBindAddress(this)
+                val transportMode = TransportMode.fromValue(PreferencesUtils.getTransportMode(this))
 
                 if (secret.isEmpty()) {
                     throw IllegalStateException("Secret is empty")
                 }
 
                 val success = withContext(Dispatchers.IO) {
-                    MtgWrapper.startProxy(this@MtgProxyService, bindAddress, secret)
+                    when (transportMode) {
+                        TransportMode.WebSocket -> WsProxyWrapper.startProxy(this@MtgProxyService, bindAddress, secret)
+                        TransportMode.MtgLegacy -> MtgWrapper.startProxy(this@MtgProxyService, bindAddress, secret)
+                    }
                 }
 
                 if (!success) throw IllegalStateException("Native proxy failed")
@@ -122,6 +128,7 @@ class MtgProxyService : LifecycleService() {
         mutex.withLock {
             withContext(Dispatchers.IO) {
                 MtgWrapper.stopProxy()
+                WsProxyWrapper.stopProxy()
             }
             updateStatus(ServiceStatus.Disconnected)
         }

@@ -34,6 +34,21 @@
             android:inputType="text"
             app:iconSpaceReserved="false" />
 
+        <ListPreference
+            android:key="transport_mode"
+            android:title="@string/transport_mode"
+            android:defaultValue="websocket"
+            android:entries="@array/transport_mode_entries"
+            android:entryValues="@array/transport_mode_values"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:key="ws_template"
+            android:title="@string/ws_template"
+            android:defaultValue="wss://kws%d.web.telegram.org/apiws"
+            android:inputType="textUri"
+            app:iconSpaceReserved="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

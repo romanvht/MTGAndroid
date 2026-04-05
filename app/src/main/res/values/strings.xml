@@ -50,11 +50,24 @@
     <string name="error_invalid_concurrency">Значение должно быть от 1 до 65535</string>
     <string name="error_invalid_timeout">Значение должно быть от 1 до 30 секунд</string>
     <string name="error_invalid_antireplay_cache">Значение должно быть от 1 до 10 MB</string>
+    <string name="error_invalid_ws_template">Шаблон должен начинаться с wss:// и содержать /apiws</string>
 
     <string name="doh_ip">DNS</string>
+    <string name="transport_mode">Транспорт</string>
+    <string name="ws_template">WS URL шаблон</string>
     <string name="concurrency">Максимум соединений</string>
     <string name="timeout">Таймаут сети (сек)</string>
     <string name="antireplay_cache">Размер кэша (MB)</string>
+
+    <string-array name="transport_mode_entries">
+        <item>WebSocket (экспериментально)</item>
+        <item>MTG (legacy)</item>
+    </string-array>
+
+    <string-array name="transport_mode_values">
+        <item>websocket</item>
+        <item>mtg</item>
+    </string-array>
 
     <string name="category_about">О программе</string>
     <string name="about_version">Версия</string>
